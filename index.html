@@ -469,15 +469,14 @@
             <div class="checkbox-container"><input type="checkbox" id="w10d7" onclick="toggleDay('w10d7')"></div>
         </div>
     </div>
-   <script>
-        // WEB-WIDE CLOUD STORAGE (Safe for GitHub Pages Network Rules)
-        const CLOUD_URL = "https://jsonhost.com/json/21c56b3e7786bf6201b1793bc43d3cb9"; 
+<script>
+        // STRICT NPOINT CLOUD PROTOCOL
+        const NPOINT_URL = "https://api.npoint.io/33c2c89bf072dd18e813"; 
         let localState = {};
 
         window.onload = async function() {
             try {
-                // Fetch existing cloud data across servers
-                const response = await fetch(CLOUD_URL);
+                const response = await fetch(NPOINT_URL);
                 if (response.ok) {
                     localState = await response.json();
                     
@@ -485,7 +484,7 @@
                         localState = {};
                     }
 
-                    // Map cloud progress onto checkboxes
+                    // Map your saved checkmarks onto the screen
                     Object.keys(localState).forEach(dayId => {
                         const checkbox = document.getElementById(dayId);
                         if (checkbox) {
@@ -493,15 +492,11 @@
                             updateCardUI(dayId, localState[dayId]);
                         }
                     });
-                    document.getElementById('syncStatus').innerText = "✅ Cloud Network Synced. Progress Loaded.";
-                    document.getElementById('syncStatus').style.color = "#2ed573";
-                } else {
-                    localState = {};
-                    document.getElementById('syncStatus').innerText = "✅ Cloud Network Initialized. Ready to save.";
+                    document.getElementById('syncStatus').innerText = "✅ Cloud Synced Successfully. Progress Loaded.";
                     document.getElementById('syncStatus').style.color = "#2ed573";
                 }
             } catch (error) {
-                document.getElementById('syncStatus').innerText = "❌ Network Connection Failed.";
+                document.getElementById('syncStatus').innerText = "❌ Connection to Cloud Storage Failed.";
                 document.getElementById('syncStatus').style.color = "#ff4757";
             }
         };
@@ -527,24 +522,27 @@
         }
 
         async function saveToCloud() {
-            document.getElementById('syncStatus').innerText = "⏳ Pushing protocol progress to the cloud...";
+            document.getElementById('syncStatus').innerText = "⏳ Saving protocol progress to cloud...";
             document.getElementById('syncStatus').style.color = "#ffa502";
             try {
-                // Using text/plain prevents the browser from doing a blocked preflight check
-                const response = await fetch(CLOUD_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain' }, 
+                // npoint requires an explicit PUT request with exact application/json content-type mapping
+                const response = await fetch(NPOINT_URL, {
+                    method: 'PUT',
+                    mode: 'cors', // Forces the browser to handle cross-origin rules safely
+                    headers: { 
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify(localState)
                 });
                 if (response.ok) {
-                    document.getElementById('syncStatus').innerText = "✅ Progress Saved Securely to Global Cloud.";
+                    document.getElementById('syncStatus').innerText = "✅ Progress Saved Securely to Cloud.";
                     document.getElementById('syncStatus').style.color = "#2ed573";
                 } else {
                     document.getElementById('syncStatus').innerText = "❌ Cloud storage rejected write operation.";
                     document.getElementById('syncStatus').style.color = "#ff4757";
                 }
             } catch (error) {
-                document.getElementById('syncStatus').innerText = "❌ Network failure pushing data.";
+                document.getElementById('syncStatus').innerText = "❌ Error pushing progress data to cloud.";
                 document.getElementById('syncStatus').style.color = "#ff4757";
             }
         }
