@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-Week Tank Protocol</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            padding: 20px;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .header-container {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(180deg, rgba(255, 71, 87, 0.1) 0%, rgba(13, 13, 13, 1) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #222;
+        }
+        h1 {
+            color: #ff4757;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 15px 0 5px 0;
+            font-size: 2.2em;
+            text-shadow: 0 0 10px rgba(255, 71, 87, 0.3);
+        }
+        .subtitle {
+            color: #aaa;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        .boyka-img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 6px;
+            border: 2px solid #ff4757;
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+            margin-top: 15px;
+        }
+        .sync-status {
+            text-align: center;
+            font-size: 0.9em;
+            color: #2ed573;
+            margin-bottom: 25px;
+            font-weight: bold;
+            background-color: #161616;
+            padding: 8px;
+            border-radius: 4px;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .week-section {
+            background-color: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .week-title {
+            font-size: 1.6em;
+            color: #ff4757;
+            font-weight: bold;
+            border-bottom: 2px solid #ff4757;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .day-card {
+            background-color: #1e1e1e;
+            border-left: 4px solid #ff4757;
+            border-radius: 4px;
+            padding: 14px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .day-info {
+            flex-grow: 1;
+            padding-right: 15px;
+        }
+        .day-name {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+            font-size: 1.05em;
+        }
+        .routine {
+            color: #b3b3b3;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+        }
+        input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: #ff4757;
+        }
+        .completed {
+            border-left-color: #2ed573;
+            opacity: 0.35;
+        }
+        .completed .day-name {
+            text-decoration: line-through;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <!-- High quality, cinematic Boyka image dynamic placeholder -->
+        <img src="https://images2.alphacoders.com/711/711912.jpg" alt="Yuri Boyka Undisputed" class="boyka-img">
+        <h1>The Tank Protocol</h1>
+        <div class="subtitle">"Most Complete Fighter in the World" Home Regime</div>
+    </div>
+
+    <div class="sync-status" id="syncStatus">Connecting to npoint cloud...</div>
+
+    <!-- WEEK 1 -->
+    <div class="week-section">
+        <div class="week-title">Week 1: The Foundation</div>
+        
+        <div class="day-card" id="w1d1-card">
+            <div class="day-info"><div class="day-name">1. Monday - Power & Stance</div><div class="routine">3 sets of 10 push-ups • 3 sets of 15 squats • 10 mins shadowboxing (Focus purely on keeping your hands up tight by your chin and throwing straight jabs and crosses).</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w1d1" onclick="toggleDay('w1d1')"></div>
+        </div>
+        <div class="day-card" id="w1d2-card">
+            <div class="day-info"><div class="day-name">2. Tuesday - Engine Building</div><div class="routine">15-minute brisk walk outside • 3 sets of 20-second planks • 5 mins loose shadowboxing focusing on smooth footwork.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w1d2" onclick="toggleDay('w1d2')"></div>
+        </div>
+        <div class="day-card" id="w1d3-card">
+            <div class="day-info"><div class="day-name">3. Wednesday - Active Recovery</div><div class="routine">Deep stretching (legs, hips, and shoulders) • Watch full fight analysis videos of heavy pressure fighters to study movement.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w1d3" onclick="toggleDay('w1d3')"></div>
+        </div>
+        <div class="day-card" id="w1d4-card">
+            <div class="day-info"><div class="day-name">4. Thursday - Power Replay</div><div class="routine">3 sets of 10 push-ups • 3 sets of 15 squats • 10 mins shadowboxing (Plant your weight solid, turn your hips into your cross).</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w1d4" onclick="toggleDay('w1d4')"></div>
+        </div>
+        <div class="day-card" id="w1d5-card">
+            <div class="day-info"><div class="day-name">5. Friday - Tactical Core</div><div class="routine">15-minute brisk walk outside • 3 sets of 20-second planks • 5 mins loose shadowboxing keeping guard up.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w1d5" onclick="toggleDay('w1d5')"></div>
+        </div>
+        <div class="day-card" id="w1d6-card">
+            <div class="day-info"><div class="day-name">6. Saturday - Shadow Expansion</div><div class="routine">10 minutes of shadowboxing experimenting with movement • Full body mobility drill / light stretching.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w1d6" onclick="toggleDay('w1d6')"></div>
+        </div>
+        <div class="day-card" id="w1d7-card">
+            <div class="day-info"><div class="day-name">7. Sunday - Complete Rest</div><div class="routine">Let the muscles heal. No physical strain. Sleep well and prepare your mind for Week 2.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w1d7" onclick="toggleDay('w1d7')"></div>
+        </div>
+    </div>
+
+    <!-- WEEK 2 -->
+    <div class="week-section">
+        <div class="week-title">Week 2: Stance Lock-In</div>
+        
+        <div class="day-card" id="w2d1-card">
+            <div class="day-info"><div class="day-name">1. Monday - Heavy Base</div><div class="routine">3 sets of 10 push-ups • 3 sets of 15 squats • 12 mins shadowboxing (Focus on resetting your stance after every combination).</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w2d1" onclick="toggleDay('w2d1')"></div>
+        </div>
+        <div class="day-card" id="w2d2-card">
+            <div class="day-info"><div class="day-name">2. Tuesday - Cardio Drill</div><div class="routine">15-minute fast-paced walk outside • 3 sets of 25-second planks • 5 mins shadowboxing focusing on head movement.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w2d2" onclick="toggleDay('w2d2')"></div>
+        </div>
+        <div class="day-card" id="w2d3-card">
+            <div class="day-info"><div class="day-name">3. Wednesday - Joint Fluidity</div><div class="routine">Focus entirely on lower back and hip stretching to unlock hidden rotation power for your strikes.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w2d3" onclick="toggleDay('w2d3')"></div>
+        </div>
+        <div class="day-card" id="w2d4-card">
+            <div class="day-info"><div class="day-name">4. Thursday - Heavy Base Repeat</div><div class="routine">3 sets of 12 push-ups • 3 sets of 15 squats • 12 mins shadowboxing with a highly active high guard defense.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w2d4" onclick="toggleDay('w2d4')"></div>
+        </div>
+        <div class="day-card" id="w2d5-card">
+            <div class="day-info"><div class="day-name">5. Friday - Dynamic Planks</div><div class="routine">15-minute fast-paced walk • 3 sets of 25-second planks • 5 mins rapid arm-punches into the air.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w2d5" onclick="toggleDay('w2d5')"></div>
+        </div>
+        <div class="day-card" id="w2d6-card">
+            <div class="day-info"><div class="day-name">6. Saturday - Endurance Boxing</div><div class="routine">12 continuous minutes of light, non-stop shadowboxing to build shoulder stamina.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w2d6" onclick="toggleDay('w2d6')"></div>
+        </div>
+        <div class="day-card" id="w2d7-card">
+            <div class="day-info"><div class="day-name">7. Sunday - Complete Rest</div><div class="routine">Rebuild your energy reserves. Check your posture when walking normally today. Keep your head up.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w2d7" onclick="toggleDay('w2d7')"></div>
+        </div>
+    </div>
+
+    <!-- WEEK 3 -->
+    <div class="week-section">
+        <div class="week-title">Week 3: Adding Weapons</div>
+        
+        <div class="day-card" id="w3d1-card">
+            <div class="day-info"><div class="day-name">1. Monday - Hook Integration</div><div class="routine">3 sets of 12 push-ups • 3 sets of 20 squats • 12 mins shadowboxing (Introduce looping heavy hooks to the liver and ribs).</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w3d1" onclick="toggleDay('w3d1')"></div>
+        </div>
+        <div class="day-card" id="w3d2-card">
+            <div class="day-info"><div class="day-name">2. Tuesday - Tank Engine Up</div><div class="routine">20-minute brisk walk outside • 3 sets of 30-second planks • 3 sets of 25 jumping jacks.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w3d2" onclick="toggleDay('w3d2')"></div>
+        </div>
+        <div class="day-card" id="w3d3-card">
+            <div class="day-info"><div class="day-name">3. Wednesday - Core Isolation</div><div class="routine">3 sets of 15 crunches • Deep hamstring and glute stretching to build heavy kicking mechanics.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w3d3" onclick="toggleDay('w3d3')"></div>
+        </div>
+        <div class="day-card" id="w3d4-card">
+            <div class="day-info"><div class="day-name">4. Thursday - Hooks & Knees</div><div class="routine">3 sets of 12 push-ups • 3 sets of 20 squats • 12 mins shadowboxing (Mix hooks with standing vertical knee strikes).</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w3d4" onclick="toggleDay('w3d4')"></div>
+        </div>
+        <div class="day-card" id="w3d5-card">
+            <div class="day-info"><div class="day-name">5. Friday - Dynamic Cardio</div><div class="routine">20-minute brisk walk outside • 3 sets of 30-second planks • 3 sets of 25 jumping jacks.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w3d5" onclick="toggleDay('w3d5')"></div>
+        </div>
+        <div class="day-card" id="w3d6-card">
+            <div class="day-info"><div class="day-name">6. Saturday - Clinch Shadowing</div><div class="routine">12 minutes shadowboxing imagining you are holding an opponent’s neck and throwing knees.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w3d6" onclick="toggleDay('w3d6')"></div>
+        </div>
+        <div class="day-card" id="w3d7-card">
+            <div class="day-info"><div class="day-name">7. Sunday - Complete Rest</div><div class="routine">Relaxation day. Give your joints a rest from the striking impact.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w3d7" onclick="toggleDay('w3d7')"></div>
+        </div>
+    </div>
+
+    <!-- WEEK 4 -->
+    <div class="week-section">
+        <div class="week-title">Week 4: Weapon Mastering</div>
+        
+        <div class="day-card" id="w4d1-card">
+            <div class="day-info"><div class="day-name">1. Monday - Heavy Strikes</div><div class="routine">3 sets of 12 push-ups • 3 sets of 20 squats • 15 mins shadowboxing focusing exclusively on heavy power punches.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w4d1" onclick="toggleDay('w4d1')"></div>
+        </div>
+        <div class="day-card" id="w4d2-card">
+            <div class="day-info"><div class="day-name">2. Tuesday - Cardio Boost</div><div class="routine">20-minute walk with 5 short 10-second sprint intervals built inside it • 3 sets of 30-second planks.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w4d2" onclick="toggleDay('w4d2')"></div>
+        </div>
+        <div class="day-card" id="w4d3-card">
+            <div class="day-info"><div class="day-name">3. Wednesday - Core Recovery</div><div class="routine">3 sets of 15 crunches • Focus on full posture alignments and passive upper body stretching.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w4d3" onclick="toggleDay('w4d3')"></div>
+        </div>
+        <div class="day-card" id="w4d4-card">
+            <div class="day-info"><div class="day-name">4. Thursday - Power Generation</div><div class="routine">3 sets of 15 push-ups • 3 sets of 20 squats • 15 mins shadowboxing combining body shots and head shots.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w4d4" onclick="toggleDay('w4d4')"></div>
+        </div>
+        <div class="day-card" id="w4d5-card">
+            <div class="day-info"><div class="day-name">5. Friday - Sprint Intervals</div><div class="routine">20-minute walk with 5 short sprint intervals • 3 sets of 35-second planks.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w4d5" onclick="toggleDay('w4d5')"></div>
+        </div>
+        <div class="day-card" id="w4d6-card">
+            <div class="day-info"><div class="day-name">6. Saturday - Fluid Boxing</div><div class="routine">15 minutes of slow, technical, highly calculated shadowboxing focusing on pure accuracy.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w4d6" onclick="toggleDay('w4d6')"></div>
+        </div>
+        <div class="day-card" id="w4d7-card">
+            <div class="day-info"><div class="day-name">7. Sunday - Complete Rest</div><div class="routine">Mid-way point assessment. Feel your body. You are becoming structurally denser.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w4d7" onclick="toggleDay('w4d7')"></div>
+        </div>
+    </div>
+
+    <!-- WEEK 5 -->
+    <div class="week-section">
+        <div class="week-title">Week 5: The Pressure Phase</div>
+        
+        <div class="day-card" id="w5d1-card">
+            <div class="day-info"><div class="day-name">1. Monday - Heavy Combinations</div><div class="routine">4 sets of 12 push-ups • 4 sets of 20 squats • 15 mins shadowboxing (Throw combinations: Jab-Cross-Hook, or Jab-Body Hook-Low Kick).</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w5d1" onclick="toggleDay('w5d1')"></div>
+        </div>
+        <div class="day-card" id="w5d2-card">
+            <div class="day-info"><div class="day-name">2. Tuesday - Fighter Lung Building</div><div class="routine">3 sets of 8 burpees (all the way to the floor and explode up) • 3 sets of 40-second planks • 10 mins continuous shadowboxing.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w5d2" onclick="toggleDay('w5d2')"></div>
+        </div>
+        <div class="day-card" id="w5d3-card">
+            <div class="day-info"><div class="day-name">3. Wednesday - Deflect and Slip</div><div class="routine">Practice slipping and rolling in front of a mirror (ducking under imaginary punches) • High guard focus.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w5d3" onclick="toggleDay('w5d3')"></div>
+        </div>
+        <div class="day-card" id="w5d4-card">
+            <div class="day-info"><div class="day-name">4. Thursday - Combination Loop</div><div class="routine">4 sets of 12 push-ups • 4 sets of 20 squats • 15 mins shadowboxing focusing entirely on continuous 3-punch combos.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w5d4" onclick="toggleDay('w5d4')"></div>
+        </div>
+        <div class="day-card" id="w5d5-card">
+            <div class="day-info"><div class="day-name">5. Friday - Lung Hardening</div><div class="routine">3 sets of 8 burpees • 3 sets of 40-second planks • 10 mins intensive pacing outside.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w5d5" onclick="toggleDay('w5d5')"></div>
+        </div>
+        <div class="day-card" id="w5d6-card">
+            <div class="day-info"><div class="day-name">6. Saturday - Close-Range Storm</div><div class="routine">15 minutes of shadowboxing simulating an aggressive opponent standing directly inside your space.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w5d6" onclick="toggleDay('w5d6')"></div>
+        </div>
+        <div class="day-card" id="w5d7-card">
+            <div class="day-info"><div class="day-name">7. Sunday - Complete Rest</div><div class="routine">Recovery. Clean your training environment to reset your mindset completely for Week 6.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w5d7" onclick="toggleDay('w5d7')"></div>
+        </div>
+    </div>
+
+    <!-- WEEK 6 -->
+    <div class="week-section">
+        <div class="week-title">Week 6: Advanced Combinations</div>
+        
+        <div class="day-card" id="w6d1-card">
+            <div class="day-info"><div class="day-name">1. Monday - Continuous Offense</div><div class="routine">4 sets of 15 push-ups • 4 sets of 20 squats • 15 mins shadowboxing adding level changes (head shots to body shots).</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w6d1" onclick="toggleDay('w6d1')"></div>
+        </div>
+        <div class="day-card" id="w6d2-card">
+            <div class="day-info"><div class="day-name">2. Tuesday - Burpee Engine</div><div class="routine">4 sets of 8 burpees • 3 sets of 45-second planks • 10 mins intensive fast footwork shadowboxing.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w6d2" onclick="toggleDay('w6d2')"></div>
+        </div>
+        <div class="day-card" id="w6d3-card">
+            <div class="day-info"><div class="day-name">3. Wednesday - Reflex Mobility</div><div class="routine">15 minutes practicing immediate counter punches right after throwing a block or slipping.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w6d3" onclick="toggleDay('w6d3')"></div>
+        </div>
+        <div class="day-card" id="w6d4-card">
+            <div class="day-info"><div class="day-name">4. Thursday - Offense Expansion</div><div class="routine">4 sets of 15 push-ups • 4 sets of 25 squats • 15 mins shadowboxing keeping high punch velocity.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w6d4" onclick="toggleDay('w6d4')"></div>
+        </div>
+        <div class="day-card" id="w6d5-card">
+            <div class="day-info"><div class="day-name">5. Friday - Advanced Endurance</div><div class="routine">4 sets of 10 burpees • 3 sets of 45-second planks • 15-minute outside jog or fast walk.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w6d5" onclick="toggleDay('w6d5')"></div>
+        </div>
+        <div class="day-card" id="w6d6-card">
+            <div class="day-info"><div class="day-name">6. Saturday - Unbroken Rounds</div><div class="routine">Execute five 3-minute rounds of shadowboxing with exactly 1-minute rest breaks between them.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w6d6" onclick="toggleDay('w6d6')"></div>
+        </div>
+        <div class="day-card" id="w6d7-card">
+            <div class="day-info"><div class="day-name">7. Sunday - Complete Rest</div><div class="routine">Rest. Mentally visualize fighting with precision, calm focus, and total power control.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w6d7" onclick="toggleDay('w6d7')"></div>
+        </div>
+    </div>
+
+    <!-- WEEK 7 -->
+    <div class="week-section">
+        <div class="week-title">Week 7: Dutch Style Power</div>
+        
+        <div class="day-card" id="w7d1-card">
+            <div class="day-info"><div class="day-name">1. Monday - The Iron Wall</div><div class="routine">4 sets of 15 push-ups • 3 sets of 12 explosive jump-squats • 15 mins shadowboxing (March forward like an iron wall, throwing heavy 4-punch combinations).</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w7d1" onclick="toggleDay('w7d1')"></div>
+        </div>
+        <div class="day-card" id="w7d2-card">
+            <div class="day-info"><div class="day-name">2. Tuesday - Blast Blast Blast</div><div class="routine">25-minute fast-paced walk/jog intervals • 4 sets of 45-second planks • 3 sets of 10 rapid push-ups.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w7d2" onclick="toggleDay('w7d2')"></div>
+        </div>
+        <div class="day-card" id="w7d3-card">
+            <div class="day-info"><div class="day-name">3. Wednesday - Iron Shield Neck</div><div class="routine">Lay flat on your back and lift your head off the ground 30 times (builds neck mass to safely absorb kinetic impact) • Core stretching.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w7d3" onclick="toggleDay('w7d3')"></div>
+        </div>
+        <div class="day-card" id="w7d4-card">
+            <div class="day-info"><div class="day-name">4. Thursday - Dutch Pressure Repeat</div><div class="routine">4 sets of 15 push-ups • 3 sets of 15 jump-squats • 15 mins shadowboxing with forward marching combinations.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w7d4" onclick="toggleDay('w7d4')"></div>
+        </div>
+        <div class="day-card" id="w7d5-card">
+            <div class="day-info"><div class="day-name">5. Friday - Heavy Interval Output</div><div class="routine">25-minute fast walk • 4 sets of 50-second planks • 3 sets of 12 explosive push-ups.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w7d5" onclick="toggleDay('w7d5')"></div>
+        </div>
+        <div class="day-card" id="w7d6-card">
+            <div class="day-info"><div class="day-name">6. Saturday - Absolute Destruction</div><div class="routine">15 minutes shadowboxing targeting heavy low targets (imagine breaking an opponent's leg balance).</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w7d6" onclick="toggleDay('w7d6')"></div>
+        </div>
+        <div class="day-card" id="w7d7-card">
+            <div class="day-info"><div class="day-name">7. Sunday - Complete Rest</div><div class="routine">Rest deeply. The high impact power of Dutch style requires serious recovery windowing.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w7d7" onclick="toggleDay('w7d7')"></div>
+        </div>
+    </div>
+
+    <!-- WEEK 8 -->
+    <div class="week-section">
+        <div class="week-title">Week 8: Total Domination</div>
+        
+        <div class="day-card" id="w8d1-card">
+            <div class="day-info"><div class="day-name">1. Monday - Heavy Execution</div><div class="routine">5 sets of 12 push-ups • 4 sets of 15 jump-squats • 15 mins shadowboxing throwing every attack with 90% power output.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w8d1" onclick="toggleDay('w8d1')"></div>
+        </div>
+        <div class="day-card" id="w8d2-card">
+            <div class="day-info"><div class="day-name">2. Tuesday - Core Shielding</div><div class="routine">4 sets of 10 burpees • 4 sets of 50-second planks • 10 minutes rapid speed punching into open space.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w8d2" onclick="toggleDay('w8d2')"></div>
+        </div>
+        <div class="day-card" id="w8d3-card">
+            <div class="day-info"><div class="day-name">3. Wednesday - Trapping & Clinch</div><div class="routine">3 sets of 40 neck lifts • 3 sets of 20 leg raises • Full hip rotation exercises.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w8d3" onclick="toggleDay('w8d3')"></div>
+        </div>
+        <div class="day-card" id="w8d4-card">
+            <div class="day-info"><div class="day-name">4. Thursday - Shockwave Strikes</div><div class="routine">5 sets of 15 push-ups • 4 sets of 15 jump-squats • 15 mins shadowboxing combining pivots and devastating hooks.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w8d4" onclick="toggleDay('w8d4')"></div>
+        </div>
+        <div class="day-card" id="w8d5-card">
+            <div class="day-info"><div class="day-name">5. Friday - Velocity Engine</div><div class="routine">4 sets of 12 burpees • 4 sets of 55-second planks • 15 minutes intensive outside running.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w8d5" onclick="toggleDay('w8d5')"></div>
+        </div>
+        <div class="day-card" id="w8d6-card">
+            <div class="day-info"><div class="day-name">6. Saturday - Unbroken Pressure</div><div class="routine">18 continuous minutes of tactical shadowboxing with zero breaks to achieve maximum stamina limits.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w8d6" onclick="toggleDay('w8d6')"></div>
+        </div>
+        <div class="day-card" id="w8d7-card">
+            <div class="day-info"><div class="day-name">7. Sunday - Complete Rest</div><div class="routine">Rest day. Notice your baseline confidence when out in public. Your presence is changing.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w8d7" onclick="toggleDay('w8d7')"></div>
+        </div>
+    </div>
+
+    <!-- WEEK 9 -->
+    <div class="week-section">
+        <div class="week-title">Week 9: The Boyka Protocol</div>
+        
+        <div class="day-card" id="w9d1-card">
+            <div class="day-info"><div class="day-name">1. Monday - Complete Combatant</div><div class="routine">5 sets of 15 push-ups • 4 sets of 25 squats • 20 mins shadowboxing split into 3-minute rounds with 1-minute rest. Simulate an aggressive fight.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w9d1" onclick="toggleDay('w9d1')"></div>
+        </div>
+        <div class="day-card" id="w9d2-card">
+            <div class="day-info"><div class="day-name">2. Tuesday - Peak Performance</div><div class="routine">4 sets of 12 burpees • 3 sets of 60-second planks • 10 minutes of non-stop, maximum-power punching.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w9d2" onclick="toggleDay('w9d2')"></div>
+        </div>
+        <div class="day-card" id="w9d3-card">
+            <div class="day-info"><div class="day-name">3. Wednesday - Combat Recovery</div><div class="routine">Deep stretching • Neck stability exercises • Watch fight tape to analyze defensive guard transitions.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w9d3" onclick="toggleDay('w9d3')"></div>
+        </div>
+        <div class="day-card" id="w9d4-card">
+            <div class="day-info"><div class="day-name">4. Thursday - Combatant Replay</div><div class="routine">5 sets of 20 push-ups • 4 sets of 25 squats • 20 mins shadowboxing split into championship 3-minute rounds.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w9d4" onclick="toggleDay('w9d4')"></div>
+        </div>
+        <div class="day-card" id="w9d5-card">
+            <div class="day-info"><div class="day-name">5. Friday - Peak Output</div><div class="routine">5 sets of 12 burpees • 3 sets of 65-second planks • 15 minutes high intensity cardio outside.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w9d5" onclick="toggleDay('w9d5')"></div>
+        </div>
+        <div class="day-card" id="w9d6-card">
+            <div class="day-info"><div class="day-name">6. Saturday - Unbroken Cage</div><div class="routine">20 minutes of non-stop multi-directional shadowboxing. Move, strike, pivot, block, counter. Never stop.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w9d6" onclick="toggleDay('w9d6')"></div>
+        </div>
+        <div class="day-card" id="w9d7-card">
+            <div class="day-info"><div class="day-name">7. Sunday - Complete Rest</div><div class="routine">Rest and fuel your body with clean food. One week remains. Build the mental beast.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w9d7" onclick="toggleDay('w9d7')"></div>
+        </div>
+    </div>
+
+    <!-- WEEK 10 -->
+    <div class="week-section">
+        <div class="week-title">Week 10: The Champion Mindset</div>
+        
+        <div class="day-card" id="w10d1-card">
+            <div class="day-info"><div class="day-name">1. Monday - Maximum Threshold</div><div class="routine">5 sets of 20 push-ups • 5 sets of 25 squats • 20 mins shadowboxing modeling Boyka's high-pressure forward offense.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w10d1" onclick="toggleDay('w10d1')"></div>
+        </div>
+        <div class="day-card" id="w10d2-card">
+            <div class="day-info"><div class="day-name">2. Tuesday - Iron Body Endurance</div><div class="routine">5 sets of 15 burpees • 4 sets of 60-second planks • 15 minutes of lightning fast shadow striking.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w10d2" onclick="toggleDay('w10d2')"></div>
+        </div>
+        <div class="day-card" id="w10d3-card">
+            <div class="day-info"><div class="day-name">3. Wednesday - Kinetic Flow</div><div class="routine">Full body deep stretching • Reflex tracking drills in the mirror • Neck resistance work.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w10d3" onclick="toggleDay('w10d3')"></div>
+        </div>
+        <div class="day-card" id="w10d4-card">
+            <div class="day-info"><div class="day-name">4. Thursday - The Final Storm</div><div class="routine">5 sets of 20 push-ups • 5 sets of 30 squats • 20 mins tactical championship shadowboxing rounds.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w10d4" onclick="toggleDay('w10d4')"></div>
+        </div>
+        <div class="day-card" id="w10d5-card">
+            <div class="day-info"><div class="day-name">5. Friday - Apex Conditioning</div><div class="routine">5 sets of 15 burpees • 4 sets of 70-second planks • 20-minute heavy pace run outside.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w10d5" onclick="toggleDay('w10d5')"></div>
+        </div>
+        <div class="day-card" id="w10d6-card">
+            <div class="day-info"><div class="day-name">6. Saturday - The Apex Ring</div><div class="routine">25 continuous minutes of absolute focus shadowboxing. You are the weapon. You control the room.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w10d6" onclick="toggleDay('w10d6')"></div>
+        </div>
+        <div class="day-card" id="w10d7-card">
+            <div class="day-info"><div class="day-name">7. Sunday - Final Triumph & Reset</div><div class="routine">Look back at your chart. Walk out into your city today with your shoulders wide, back straight, and eyes looking forward. You are no longer an easy target. You are a Tank.</div></div>
+            <div class="checkbox-container"><input type="checkbox" id="w10d7" onclick="toggleDay('w10d7')"></div>
+        </div>
+    </div>
+
+    <script>
+        // REPLACE THE URL BELOW WITH YOUR ACTUAL NPOINT BIN URL
+        const NPOINT_URL = "https://www.npoint.io/docs/33c2c89bf072dd18e813"; 
+        let localState = {};
+
+        window.onload = async function() {
+            if (NPOINT_URL === "YOUR_NPOINT_API_URL_HERE") {
+                document.getElementById('syncStatus').innerText = "⚠️ Cloud Setup Required! Please paste your npoint URL inside the HTML code script tag.";
+                document.getElementById('syncStatus').style.color = "#ff4757";
+                return;
+            }
+
+            try {
+                const response = await fetch(NPOINT_URL);
+                if (response.ok) {
+                    localState = await response.json();
+                    Object.keys(localState).forEach(dayId => {
+                        const checkbox = document.getElementById(dayId);
+                        if (checkbox) {
+                            checkbox.checked = localState[dayId];
+                            updateCardUI(dayId, localState[dayId]);
+                        }
+                    });
+                    document.getElementById('syncStatus').innerText = "✅ Cloud Synced Successfully. Progress Loaded.";
+                    document.getElementById('syncStatus').style.color = "#2ed573";
+                }
+            } catch (error) {
+                document.getElementById('syncStatus').innerText = "❌ Connection to Cloud Storage Failed.";
+                document.getElementById('syncStatus').style.color = "#ff4757";
+            }
+        };
+
+        function toggleDay(dayId) {
+            const checkbox = document.getElementById(dayId);
+            const isChecked = checkbox.checked;
+            
+            updateCardUI(dayId, isChecked);
+            localState[dayId] = isChecked;
+            saveToCloud();
+        }
+
+        function updateCardUI(dayId, isChecked) {
+            const card = document.getElementById(dayId + '-card');
+            if (card) {
+                if (isChecked) {
+                    card.classList.add('completed');
+                } else {
+                    card.classList.remove('completed');
+                }
+            }
+        }
+
+        async function saveToCloud() {
+            document.getElementById('syncStatus').innerText = "⏳ Saving protocol progress to cloud...";
+            document.getElementById('syncStatus').style.color = "#ffa502";
+            try {
+                const response = await fetch(NPOINT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(localState)
+                });
+                if (response.ok) {
+                    document.getElementById('syncStatus').innerText = "✅ Progress Saved Securely to Cloud.";
+                    document.getElementById('syncStatus').style.color = "#2ed573";
+                }
+            } catch (error) {
+                document.getElementById('syncStatus').innerText = "❌ Error pushing progress data to cloud.";
+                document.getElementById('syncStatus').style.color = "#ff4757";
+            }
+        }
+    </script>
+</body>
+</html>
