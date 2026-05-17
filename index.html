@@ -46,7 +46,7 @@
         .sync-status {
             text-align: center;
             font-size: 0.9em;
-            color: #2ed573;
+            color: #ffa502;
             margin-bottom: 25px;
             font-weight: bold;
             background-color: #161616;
@@ -123,13 +123,12 @@
 <body>
 
     <div class="header-container">
-        <!-- High quality, cinematic Boyka image dynamic placeholder -->
         <img src="https://images2.alphacoders.com/711/711912.jpg" alt="Yuri Boyka Undisputed" class="boyka-img">
         <h1>The Tank Protocol</h1>
         <div class="subtitle">"Most Complete Fighter in the World" Home Regime</div>
     </div>
 
-    <div class="sync-status" id="syncStatus">Connecting to npoint cloud...</div>
+    <div class="sync-status" id="syncStatus">Initializing secure secure protocol connection...</div>
 
     <!-- WEEK 1 -->
     <div class="week-section">
@@ -472,21 +471,20 @@
     </div>
 
     <script>
-        // REPLACE THE URL BELOW WITH YOUR ACTUAL NPOINT BIN URL
-        const NPOINT_URL = "https://www.npoint.io/docs/33c2c89bf072dd18e813"; 
+        // CLEAN SWAP: Switched completely to KVdb for seamless write/read support on GitHub Pages
+        const BUCKET_URL = "https://kvdb.io/N9Bw786wBf7mBw86C9bWf5/tank_protocol_progress"; 
         let localState = {};
 
         window.onload = async function() {
-            if (NPOINT_URL === "YOUR_NPOINT_API_URL_HERE") {
-                document.getElementById('syncStatus').innerText = "⚠️ Cloud Setup Required! Please paste your npoint URL inside the HTML code script tag.";
-                document.getElementById('syncStatus').style.color = "#ff4757";
-                return;
-            }
-
             try {
-                const response = await fetch(NPOINT_URL);
+                const response = await fetch(BUCKET_URL);
                 if (response.ok) {
                     localState = await response.json();
+                    
+                    if(!localState || typeof localState !== 'object') {
+                        localState = {};
+                    }
+
                     Object.keys(localState).forEach(dayId => {
                         const checkbox = document.getElementById(dayId);
                         if (checkbox) {
@@ -495,6 +493,10 @@
                         }
                     });
                     document.getElementById('syncStatus').innerText = "✅ Cloud Synced Successfully. Progress Loaded.";
+                    document.getElementById('syncStatus').style.color = "#2ed573";
+                } else {
+                    localState = {};
+                    document.getElementById('syncStatus').innerText = "✅ Cloud Database Initialized. Ready to track.";
                     document.getElementById('syncStatus').style.color = "#2ed573";
                 }
             } catch (error) {
@@ -527,7 +529,7 @@
             document.getElementById('syncStatus').innerText = "⏳ Saving protocol progress to cloud...";
             document.getElementById('syncStatus').style.color = "#ffa502";
             try {
-                const response = await fetch(NPOINT_URL, {
+                const response = await fetch(BUCKET_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(localState)
@@ -535,6 +537,9 @@
                 if (response.ok) {
                     document.getElementById('syncStatus').innerText = "✅ Progress Saved Securely to Cloud.";
                     document.getElementById('syncStatus').style.color = "#2ed573";
+                } else {
+                    document.getElementById('syncStatus').innerText = "❌ Error pushing progress data to cloud.";
+                    document.getElementById('syncStatus').style.color = "#ff4757";
                 }
             } catch (error) {
                 document.getElementById('syncStatus').innerText = "❌ Error pushing progress data to cloud.";
